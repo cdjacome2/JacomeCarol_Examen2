@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.math.BigDecimal;
 import java.util.List;
 import com.examen.jacome.enums.TipoTransaccion;  // Importar desde el paquete enums
-import com.examen.jacome.model.Denominacion; // Importar la clase Denominacion
 
 @Getter
 @Setter

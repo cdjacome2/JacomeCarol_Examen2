@@ -1,6 +1,7 @@
 package com.examen.jacome.mapper;
 
 import com.examen.jacome.model.TurnoCaja;
+import com.examen.jacome.enums.EstadoTurno;
 import com.examen.jacome.dto.TurnoCajaDTO;
 import org.springframework.stereotype.Component;
 
@@ -37,8 +38,7 @@ public class TurnoCajaMapper {
         model.setInicioTurno(dto.getInicioTurno());
         model.setMontoInicial(dto.getMontoInicial());
         model.setFinTurno(dto.getFinTurno());
-        model.setMontoFinal(dto.getMontoFinal());
-        model.setEstado(TurnoCaja.EstadoTurno.valueOf(dto.getEstado())); // Convertimos el String a enum
+        model.setEstado(EstadoTurno.valueOf(dto.getEstado())); // Convertimos el String a enum
 
         return model;
     }

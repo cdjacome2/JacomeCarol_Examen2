@@ -1,6 +1,8 @@
 package com.examen.jacome.mapper;
 
 import com.examen.jacome.model.TransaccionTurno;
+import com.examen.jacome.model.Denominacion;
+import com.examen.jacome.enums.TipoTransaccion;
 import com.examen.jacome.dto.TransaccionTurnoDTO;
 import org.springframework.stereotype.Component;
 
@@ -47,13 +49,12 @@ public class TransaccionTurnoMapper {
         model.setCodigoCaja(dto.getCodigoCaja());
         model.setCodigoCajero(dto.getCodigoCajero());
         model.setCodigoTurno(dto.getCodigoTurno());
-        model.setTipoTransaccion(TransaccionTurno.TipoTransaccion.valueOf(dto.getTipoTransaccion())); // Convertimos el String a enum
+        model.setTipoTransaccion(TipoTransaccion.valueOf(dto.getTipoTransaccion())); // Convertimos el String a enum
         model.setMontoTotal(dto.getMontoTotal());
 
-        // Convertimos las denominaciones de DTO a entidad
-        List<TransaccionTurno.Denominacion> denominacionList = dto.getDenominaciones().stream()
+        List<Denominacion> denominacionList = dto.getDenominaciones().stream()
                 .map(denominacionDTO -> {
-                    TransaccionTurno.Denominacion denominacion = new TransaccionTurno.Denominacion();
+                    Denominacion denominacion = new Denominacion();
                     denominacion.setBillete(denominacionDTO.getBillete());
                     denominacion.setCantidadBilletes(denominacionDTO.getCantidadBilletes());
                     denominacion.setMonto(denominacionDTO.getMonto());
