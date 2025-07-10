@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  # Contenedor para MongoDB
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=rootpassword
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+  # Contenedor para el microservicio
+  gestion_efectivo:
+    build: .
+    container_name: gestion_efectivo
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://root:rootpassword@mongo:27017/gestion_efectivo
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+# Volúmenes
+volumes:
+  mongo-data:
+
+# Redes
+networks:
+  app-network:
+    driver: bridge

@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import com.examen.jacome.enums.EstadoTurno;  // Importar desde el paquete enums
 
 @Getter
 @Setter
@@ -26,10 +27,6 @@ public class TurnoCaja {
     private BigDecimal montoInicial;
     private LocalDateTime finTurno;
     private BigDecimal montoFinal;
-    private EstadoTurno estado;
+    private EstadoTurno estado;  // Utilizando el Enum desde enums
 
-    public enum EstadoTurno {
-        ABIERTO,
-        CERRADO
-    }
 }
